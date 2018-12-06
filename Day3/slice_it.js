@@ -1,5 +1,6 @@
 'use strict'
 const fs = require('fs');
+
 // PART 1
 const parse = row => {
     let leftop = row.split("@")[1].split(":")[0].split(",");
@@ -23,23 +24,23 @@ const getIndexes = coords => {
 }
 
 // PART 1
-// const computeOverlapArea = input => {
-//     let sum = 0;
-//     let hmap = {};
-//     input.forEach(row => {
-//         let indexes = getIndexes(parse(row));
-//         indexes.forEach(pair => {
-//             if (hmap[pair]) {
-//                 if (hmap[pair] == 1) {
-//                     hmap[pair] = 'X';
-//                     sum++;
-//                 }
-//             }
-//             else hmap[pair] = 1;
-//         })
-//     })
-//     return sum;
-// }
+const computeOverlapArea = input => {
+    let sum = 0;
+    let hmap = {};
+    input.forEach(row => {
+        let indexes = getIndexes(parse(row));
+        indexes.forEach(pair => {
+            if (hmap[pair]) {
+                if (hmap[pair] == 1) {
+                    hmap[pair] = 'X';
+                    sum++;
+                }
+            }
+            else hmap[pair] = 1;
+        })
+    })
+    return sum;
+}
 
 // PART 2
 const computeNonOverlapId = input => {
