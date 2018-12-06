@@ -72,12 +72,6 @@ const computeNonOverlapId = input => {
     }
 }
 
-// console.log(computeNonOverlapId([
-//     "#1 @ 1,3: 4x4",
-//     "#2 @ 3,1: 4x4",
-//     "#3 @ 5,5: 2x2"
-// ]))
-
 fs.readFile(__dirname + `/input.txt`, (err, data) => {
     console.log(computeNonOverlapId(data.toString().split('\n')));
 })

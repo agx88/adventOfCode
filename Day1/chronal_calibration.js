@@ -7,7 +7,7 @@ const computeFreq = numbers => {
     }, 0);
 }
 
-// PART 1
+// PART 2
 const computeFreqTwice = input => {
     const hashMap = { 0: true };
     let sum = 0;
