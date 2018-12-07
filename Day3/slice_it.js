@@ -1,16 +1,13 @@
 'use strict'
 const fs = require('fs');
 
-// PART 1
 const parse = row => {
-    let leftop = row.split("@")[1].split(":")[0].split(",");
-    let wh = row.split("@")[1].split(":")[1].split("x")
-    return {
-        left: Number(leftop[0]),
-        top: Number(leftop[1]),
-        width: Number(wh[0]),
-        height: Number(wh[1])
-    }
+    const [ id, left, top, width, height ] = row
+      .match(/^#(\d+) @ (\d+),(\d+): (\d+)x(\d+)$/)
+      .slice(1, 6)
+      .map(Number)
+  
+    return { id, left, top, width, height }
 }
 
 const getIndexes = coords => {
@@ -59,15 +56,12 @@ const computeNonOverlapId = input => {
     })
 
     for (let row of input) {
-        let indexes = getIndexes(parse(row));
+        let parsed = parse(row);
+        let indexes = getIndexes(parsed);
         let i = 0;
-        for (i; i < indexes.length; i++) {
-            if (hmap[indexes[i]] == 'X') {
-                break;
-            }
-        }
+        for (i; i < indexes.length && !(hmap[indexes[i]] == 'X'); i++);
         if (i == indexes.length) {
-            return row.split('@')[0].split('#')[1]; //id of the row
+            return parsed.id; //id of the row
         }
     }
 }
