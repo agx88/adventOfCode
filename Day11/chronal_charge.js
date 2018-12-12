@@ -39,7 +39,6 @@ const sumSubMatrix = (grid, row, col, range) => {
 }
 
 //find the most powerful 3x3 square
-//the problem is HEREEEEE!!! --> found it -.- implicit cast
 const getMostPowerful = grid => {
     let max_sum = 0;
     let coords = [0, 0];
